@@ -1,0 +1,59 @@
+.portfolio dl {
+	position: relative;
+}
+
+.portfolio dt.image {
+	text-align: center;
+}
+
+.portfolio dt.image img {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.portfolio dd {
+	margin: 0;
+}
+
+.portfolio dd.site_name a {
+	font-family: "Lato", sans-serif;
+	text-align: center;
+	display: block;
+	text-decoration: none;
+}
+
+.portfolio dd.launch_date {
+	font-family: "Lato", sans-serif;
+	font-size: (@font_size * 0.66);
+	text-align: center;
+	color: @black_light;
+}
+
+.portfolio dd.description {
+	font-size: (@font_size * 0.7);
+	text-align: center;
+	display: none;
+}
+
+@media all and (min-width: 30em) {
+  .portfolio dl {
+	  display: inline-block;
+	  max-width: 45%;
+	  margin: @gutter 0.5em;
+  }
+}
+
+@media all and (min-width: 41em) {
+  .portfolio dl {
+	  display: inline-block;
+	  max-width: 29%;
+	  margin: @gutter 0.5em;
+  }
+}
+
+@media all and (min-width: 65em) {
+  .portfolio dl {
+	  display: inline-block;
+	  max-width: 22%;
+	  margin: @gutter 0.5em;
+  }
+}

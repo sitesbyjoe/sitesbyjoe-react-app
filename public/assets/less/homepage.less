@@ -1,0 +1,239 @@
+.highlight h1 {
+	font-weight: lighter;
+	margin: @gutter_tight 0;
+	text-align: center;
+	font-size: 2.2em;
+	line-height: @line_height_tight;
+}
+
+.highlight .red {
+	color: @red_lighter;
+}
+
+.highlight p {
+	text-align: center;
+	font-family: "Lato", sans-serif;
+	text-transform: uppercase;
+	font-size: 0.75em;
+	letter-spacing: 0.12em;
+}
+
+/* Devices */
+@desktop_width: 13.8em; 			// 60%
+@laptop_width: 14.62em; 			// 64%
+@tablet_large_width: 5.51em ;	// 24%
+@tablet_small_width: 4.14em; 	// 18% 
+@phone_large_width: 1.61em; 	// 7%
+
+.highlight {
+	background-image: -webkit-linear-gradient(top, @red 0%, @grey_dark 100%);	
+	   background-image: -moz-linear-gradient(top, @red 0%, @grey_dark 100%);
+	    background-image: -ms-linear-gradient(top, @red 0%, @grey_dark 100%);	   
+	     background-image: -o-linear-gradient(top, @red 0%, @grey_dark 100%);
+	        background-image: linear-gradient(top, @red 0%, @grey_dark 100%);
+	padding: @padding;
+	color: @white;
+	text-shadow: @text_shadow;
+	position: relative;
+	min-height: 12em;
+}
+
+.devices {
+	position: relative;
+}
+
+.devices.shadow,
+.devices .laptop, 
+.devices .tablet-large, 
+.devices .tablet-small,
+.devices .phone-large {
+	position: absolute;
+	bottom: 0;
+}
+
+.devices .desktop {	
+	max-width: @desktop_width;
+	margin-left: 0%;
+	z-index: 99;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+.highlight .laptop {
+	z-index: 100;
+	left: 1%;
+	max-width: @laptop_width;
+}
+
+.highlight .tablet-large {
+	z-index: 101;
+	max-width: @tablet_large_width;
+	left: 10%;
+}
+
+.highlight .tablet-small {
+	z-index: 102;
+	max-width: @tablet_small_width;
+	left: 58%;
+}
+
+.highlight .phone-large {
+	z-index: 103;
+	max-width: @phone_large_width;
+	left: 53%;
+}
+
+.highlight .shadow {
+	z-index: 1;
+	
+}
+
+@media all and (min-width: 29em) {
+	
+	.devices .desktop { 
+		max-width: @desktop_width * 1.1;
+		margin-left: 5%;
+	}
+	
+	.highlight .laptop {
+		left: 27%;
+		max-width: @laptop_width * 1.1;
+	}
+	
+	.highlight .tablet-large {
+		max-width: @tablet_large_width * 1.1;
+		left: 8.5%;
+	}
+	
+	.highlight .tablet-small {
+		max-width: @tablet_small_width * 1.1;
+		left: 49%;
+	}
+	
+	.highlight .phone-large {
+		max-width: @phone_large_width * 1.1;
+		left: 77%;
+	}
+
+}
+
+/*-------- iphone landscape specific 480 x 320 --------*/
+@media all and (max-width: 30em) and (max-height: 20em) {
+	.devices {
+		.desktop { max-height: 58%; }
+		.laptop { max-height: 76%; left: 46%; }
+		.tablet-large { max-height: 56%; left: 11.5%; }
+		.tablet-small { max-height: 43%; left: 44.6%; }
+		.phone-large { max-height: 33%; left: 77%; }
+	}
+}
+
+@media all and (min-width: 35em) {
+	
+	.devices .desktop { 
+		max-width: @desktop_width * 1.2;
+		margin-left: 5%;
+	}
+	
+	.highlight .laptop {
+		left: 38%;
+		max-width: @laptop_width * 1.2;
+	}
+	
+	.highlight .tablet-large {
+		max-width: @tablet_large_width * 1.2;
+		left: 10%;
+	}
+	
+	.highlight .tablet-small {
+		max-width: @tablet_small_width * 1.2;
+		left: 49%;
+	}
+	
+	.highlight .phone-large {
+		max-width: @phone_large_width * 1.2;
+		left: 77%;
+	}
+
+}
+
+@media all and (min-width: 52em) {
+  .devices .desktop {
+		max-width: @desktop_width * 1.8;
+		margin-left: 14%;
+	}
+	
+	.highlight .laptop {
+		left: 32%;
+		max-width: @laptop_width * 1.8;
+	}
+	
+	.highlight .tablet-large {
+		max-width: @tablet_large_width * 1.8;
+		left: 10%;
+	}
+	
+	.highlight .tablet-small {
+		max-width: @tablet_small_width * 1.8;
+		left: 44%;
+	}
+	
+	.highlight .phone-large {
+		max-width: @phone_large_width * 1.8;
+		left: 74%;
+	}
+}
+
+@media all and (min-width: 71em) {
+	.devices .desktop {
+		max-width: @desktop_width * 2.2;
+		margin-left: 6%;
+	}
+	
+	.highlight .laptop {
+		left: 38%;
+		max-width: @laptop_width * 2.2;
+	}
+	
+	.highlight .tablet-large {
+		max-width: @tablet_large_width * 2.2;
+		left: 12%;
+	}
+	
+	.highlight .tablet-small {
+		max-width: @tablet_small_width * 2.2;
+		left: 64%;
+	}
+	
+	.highlight .phone-large {
+		max-width: @phone_large_width * 2.2;
+		left: 43%;
+	}
+}
+
+@media all and (min-width: 86em) {
+	.devices .desktop {
+		max-width: @desktop_width * 2.2;
+		margin-left: 10%;
+	}
+	
+	.highlight .laptop {
+		left: 46%;
+		max-width: @laptop_width * 2.2;
+	}
+	
+	.highlight .tablet-large {
+		max-width: @tablet_large_width * 2.2;
+		left: 12%;
+	}
+	
+	.highlight .tablet-small {
+		max-width: @tablet_small_width * 2.2;
+		left: 44%;
+	}
+	
+	.highlight .phone-large {
+		max-width: @phone_large_width * 2.2;
+		left: 74%;
+	}
+}

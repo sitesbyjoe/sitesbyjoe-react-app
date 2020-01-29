@@ -1,0 +1,112 @@
+nav {
+	position: relative;
+	background: rgba(0,0,0,0.3);
+	margin: -1em -1em 1em -1em;
+}
+
+nav .main-nav {
+	height: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	overflow: hidden;
+}
+
+nav .main-nav li {
+	visibility: visible;
+}
+
+nav .main-nav.active {
+	height: auto;
+}
+
+nav .main-nav a {
+	display: block;
+	color: rgba(255,255,255,0.8);
+	padding: @padding_tight @padding;
+}
+
+.main-nav li:nth-of-type(1) a {
+	background-color: rgba(0,0,0,0.3);
+	padding-top: 1em;
+}
+
+.main-nav li:nth-of-type(2) a {
+	background-color: rgba(0,0,0,0.2);
+}
+
+.main-nav li:nth-of-type(3) a {
+	background-color: rgba(0,0,0,0.1);
+}
+
+nav .main-nav a:hover, 
+nav .main-nav a:active {
+	color: @white;
+	/*background: -webkit-linear-gradient(top,  rgba(255,255,255,0.05),  transparent);*/
+}
+
+.menu-button {
+	float: right;
+	display: inline-block;
+	margin: 0;
+	background-color: rgba(0,0,0,0.3);
+	padding: @padding @padding @padding_tight @padding;
+}
+
+.menu-button .text {
+	display: none;
+}
+
+.menu-button a,
+.menu-button a:hover,
+.menu-button a:active {
+	color: @white;
+	font-weight: lighter;
+}
+
+
+@media all and (min-width: 18em) {
+	.menu-button .text {
+		display: inline;
+	}
+}
+
+@media all and (min-width: 48em) {
+	.menu-button {
+		display: none;
+	}
+	
+	nav .main-nav {
+		height: auto !important;
+		float: right;
+		margin-right: 1em;
+	}	
+	
+	.main-nav li {
+		display: inline-block;
+	}
+	
+	.main-nav a {
+		background: transparent !important;
+	}
+}
+
+@media all and (min-width: 20em) and (max-width: 25.999999em) {
+	.main-nav li {
+		display: inline-block;
+		min-width: 49%;
+		max-width: 49%;
+	}
+}
+
+@media all and (min-width: 26em) and (max-width: 48em) {
+	.main-nav li {
+		display: inline-block;
+		min-width: 24%;
+		max-width: 24%;
+	}
+	
+	.main-nav li a {
+		text-align: center;
+	}
+}

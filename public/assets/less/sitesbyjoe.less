@@ -1,0 +1,278 @@
+/* Color Variables
+---------------------------------------*/
+@black_light: rgba(0,0,0,0.3);
+@text: #333333;
+@grey_dark: #272931;
+@red: #923f3f;
+@red_darker: #9F4545;
+@red_lighter: #AF6262;
+@tan: #d7b181;
+@white: #ffffff;
+@white_light: rgba(255,255,255,0.3);
+
+/* Typography Variables
+---------------------------------------*/
+@font_size: 120%;
+@line_height: 1.5;
+@line_height_tight: 1.2;
+@text_shadow: 0 1px 3px rgba(0,0,0,0.3);
+@text_shadow_inset: 0 -1px 1px rgba(255,255,255,0.3);
+@text_shadow_inset_dark: 0 -1px 1px rgba(0,0,0,0.3);
+
+/* Layout Variables
+---------------------------------------*/
+@bottom_margin: 1.5em;
+@bottom_margin_sm: 1em;
+@padding: 1em;
+@padding_tight: 0.5em;
+@border_radius: 0.5em;
+@gutter: 1.0em;
+@gutter_tight: 0.5em;
+
+/* Mobile first styles : smallest screen size and upward
+-----------------------------------------------------------*/
+* {
+	-webkit-transition: all 0.2s;
+	   -moz-transition: all 0.2s;
+	    -ms-transition: all 0.2s;
+	     -o-transition: all 0.2s;
+}
+
+body {
+	background-color: @tan;
+	color: @text;
+	font-size: @font_size;
+	font-family: Georgia, serif;
+	line-height: @line_height;
+	background-image: url('../images/body-bg.jpg');
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Lato, sans-serif;
+}
+
+a {
+	color: @red;
+}
+
+a:hover, 
+a:active {
+	color: @red;
+}
+
+img {
+	max-width: 100%;
+}
+
+header {
+	background-color: @red;
+	padding: @padding_tight @padding;
+	font-family: Lato, sans-serif;
+	position: relative;
+}
+
+header a {
+	color: @white;
+	text-decoration: none;
+}
+
+.logo {
+	font-size: 1.0em;
+	text-transform: uppercase;
+	letter-spacing: 5px;
+	font-weight: lighter;
+}
+
+.logo:hover, 
+.logo:active {
+	color: @white;
+}
+
+@import "navigation.less";
+@import "homepage.less";
+
+.section-heading {
+	background: @grey_dark;
+	margin: -@gutter -@gutter (@gutter * 1.5) -@gutter;
+	padding: (@gutter + 0.5) @gutter;
+	border-bottom: 1px solid @white_light;
+}
+
+.section-heading h1 {
+	margin: 0;
+	color: @white;
+	line-height: @line_height_tight;
+	text-shadow: @text_shadow;
+}
+
+.section-heading h1 .red {
+	color: @red_lighter;
+}
+
+article {
+	padding: @padding_tight @padding;
+	border-top: 1px solid @white_light;
+	margin: 0 auto;
+}
+
+article h1 {
+	text-align: center;
+}
+
+article h2, 
+article h3, 
+article h4, 
+footer h3,
+footer h4 {
+	color: @red;
+	text-align: center;
+	margin-bottom: @bottom_margin_sm;
+}
+
+article h2 {
+	color: @grey_dark;
+	text-shadow: @text_shadow_inset;
+	line-height: (@line_height * 0.866);
+}
+
+article h2 .red {
+	color: @red_lighter;
+}
+
+.contact-bar {
+	background: rgba(0,0,0,0.1);
+	padding: @padding_tight @padding;
+	text-align: center;
+}
+
+.button {
+	display: inline-block;
+	padding: @padding_tight @padding;
+	background-color: @red;
+	color: @white;
+	font-family: Lato, sans-serif;
+	text-decoration: none;
+	border-radius: @border_radius;
+	box-shadow: @text_shadow;
+	text-shadow: @text_shadow_inset_dark;
+}
+
+.button:hover,
+.button:active {
+	background-color: @red_lighter;
+	color: @white;
+}
+
+footer {
+	padding: @padding_tight @padding;
+	background: rgba(0,0,0,0.6);
+	text-shadow: @text_shadow;
+	font-family: Lato, sans-serif;
+	font-size: (@font_size * 0.6);
+}
+
+footer h3,
+footer h4 {
+	color: @red_lighter;
+	text-align: center;
+}
+
+footer ul {
+	list-style: none;
+	padding: 0;
+}
+
+footer li a {
+	text-align: center;
+}
+
+footer a {
+	color: rgba(255,255,255,0.6);
+	text-decoration: none;
+	display: block;
+	border-top: 1px dashed rgba(255,255,255,0.1);
+	padding: (@padding_tight / 2);
+	font-size: (@font_size * 0.9);
+}
+
+footer a:hover, 
+footer a:active {
+	color: @white;
+}
+
+.back-to-top {
+	text-align: center;
+	margin: @gutter;
+}
+
+footer .credits {
+	font-size: (@font_size * 0.75);
+	text-align: center;
+	color: rgba(255,255,255,0.6);
+	padding: @padding;
+}
+
+@import "portfolio.less";
+
+/*--------------- 600px -------------------*/
+@media all and (min-width: 37.5em) {
+	body {
+		font-size: 140%;
+	}
+	
+	article h1 {
+		font-size: 320%;
+		text-align: center;
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+	
+  article h2,
+  article h3,
+  article h4,
+  article p,
+  article ul {
+	  margin-left: 10%;
+	  margin-right: 10%;
+  }
+  
+}
+
+/*------------ 640px ---------------*/
+@media all and (min-width: 40em) {
+	footer section {
+	  display: inline-block;
+	  width: 40%;
+	  vertical-align: top;
+	  margin: @gutter;
+  }
+}
+
+
+
+/*------------- 864px ---------------*/
+@media all and (min-width: 54em) {
+	article h1 {
+		font-size: 420%;
+		text-align: center;
+	}
+	
+  article h2,
+  article h3,
+  article h4,
+  article p,
+  article ul {
+	  margin-left: 20%;
+	  margin-right: 20%;
+  }
+}
+
+/*------------- 960px ---------------*/
+@media all and (min-width: 60em) {
+	footer section {
+	  display: inline-block;
+	  width: 29%;
+	  vertical-align: top;
+	  margin: @gutter;
+  }
+}
