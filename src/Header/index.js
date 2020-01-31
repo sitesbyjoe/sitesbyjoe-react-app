@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MainMenu from '../Nav/MainMenu';
+import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
 
@@ -7,7 +8,7 @@ export default class Header extends Component {
     return (
       <header>
         <MainMenu />
-        <a className="logo" href="index.html"><b>Sites</b>byJoe</a>
+        <Link className="logo" to="/"><b>Sites</b>byJoe</Link>
       </header>	
     )
   }

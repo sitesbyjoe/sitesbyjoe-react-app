@@ -40,7 +40,7 @@ export default class Footer extends React.Component {
           </ul>
         </section>
     
-        <div className="back-to-top"><a onClick={this.scrollToTop()}>Back to Top</a></div>
+        <div className="back-to-top"><a onClick={this.scrollToTop }>Back to Top</a></div>
         
         <p className="credits">Copyright &copy;2013 Sites by Joe. All rights reserved.</p>
       </footer>
