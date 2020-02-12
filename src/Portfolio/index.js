@@ -1,14 +1,15 @@
 import React from 'react';
-import axios from 'axios';
 import Moment from 'react-moment'
 import { Link } from 'react-router-dom'
+import { connect } from "react-redux";
+import { getPortfolio } from '../js/actions'
 
-export default class Portfolio extends React.Component {
+class Portfolio extends React.Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      portfolio: [],
+      // portfolio: [],
       loading: true,
     }
   }
@@ -20,38 +21,37 @@ export default class Portfolio extends React.Component {
   }
 
   showLoading () {
-    if (this.state.portfolio.length === 0) {
+    if (this.props.portfolio.length === 0) {
       return <p>Loading...</p>
     }
   }
 
   componentWillMount () {
     console.log('portfolio will mount')
+    // this.props.getPortfolio()
   }
 
   componentDidMount () {
     console.log('portfolio did mount')
-    axios({
-      url: 'http://sitesbyjoe.com/api/portfolio_list',
-      method: 'get'
-    })
-    .then(resp => {
-      console.log('got something', resp)
-      this.setState({
-        portfolio: resp.data,
-        loading: false
-      })
-    })
-    .catch(err => {
-      console.error('oh shit', err)
-    })
+  }
 
+  componentDidUpdate () {
+    if (this.props.portfolio.length > 0) {
+      // this.setState({
+      //   loading: false
+      // })
+    }
   }
 
   render () {
-    let loading;
+    let loading, list;
+    
     if (this.state.loading === true) {
       loading = <p>Loading...</p>
+    }
+
+    if (this.props.portfolio.length > 0) {
+      list = <p>{JSON.stringify(this.props.portfolio)}</p>
     }
 
     return (
@@ -63,9 +63,7 @@ export default class Portfolio extends React.Component {
             <p style={this.disclaimerStyle}>These are websites I had designed and built before joining Edvisors Networks, Inc.	 in October 2011 as a Senior Front End Developer.</p>
           </div>
 
-          {loading}
-
-          {this.state.portfolio.map(item => 
+          {this.props.portfolio.map(item => 
             <dl key={item.id}>
               <dt className="image">
                 <Link to={'/portfolio/detail/' + item.id} title={item.description}>
@@ -88,3 +86,11 @@ export default class Portfolio extends React.Component {
   }
 
 }
+
+function mapStateToProps (state) {
+  return { 
+    portfolio: state.portfolio
+  };
+};
+
+export default connect(mapStateToProps, { getPortfolio })(Portfolio)

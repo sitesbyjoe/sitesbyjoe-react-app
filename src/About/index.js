@@ -1,8 +1,31 @@
 import React from 'react';
+import { connect } from "react-redux";
 
-export default class About extends React.Component {
+class About extends React.Component {
+
+  componentDidMount () {
+    console.log('mounted, props?', this.props)
+  }
 
   render () {
+    
+    const NoUsers = (users) => {
+      console.log('NoUSers', users)
+      if (users.length === 0) {
+        return <p>no users</p>
+      } else {
+        return<p>some users, {JSON.stringify(users)}</p>
+      }
+    }
+
+    const NoChildrenz = (childrenz) => {
+      if (childrenz.length === 0) {
+        return <p>No childrenz</p>
+      } else {
+        return <p>some childrenz, {JSON.stringify(childrenz)}</p>
+      }
+    }
+
     return (
       <article>
         <div className="container">
@@ -10,7 +33,11 @@ export default class About extends React.Component {
           <div className="section-heading">
             <h1>About</h1>
           </div>
-          
+
+          <NoUsers users={this.props.users} />
+
+          <NoChildrenz childrenz={this.props.childrenz} />
+
           <h2 className="darkgrey">What is Sites by Joe?</h2>
 
           <p>Sites by Joe was a tiny design studio I started almost 20 years ago that made custom websites. My motto was "Clean, Simple & Elegant Web Design" and that's just what I did. The studio was located in Cape May County, New Jersey and I focused on local area business websites. I built every website by hand and provided full stack website service. I still help some of those businesses today.</p>
@@ -34,3 +61,13 @@ export default class About extends React.Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  const {childrenz, users} = state;
+  return {
+    childrenz, 
+    users
+  }
+}
+
+export default connect(mapStateToProps)(About)
