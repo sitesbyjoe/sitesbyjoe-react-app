@@ -11,9 +11,7 @@ const Home = (props) => {
   return (
     <div className="homepage">
 
-      <Highlight />
-
-      {JSON.stringify(application)}
+      <Highlight application={application} />
 
       <Content />
 
