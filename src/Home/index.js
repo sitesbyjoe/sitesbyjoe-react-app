@@ -1,26 +1,27 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 import Highlight from './Highlight';
 import Content from './Content';
 import ContactBar from './ContactBar';
 
-export default class Home extends React.Component {
-  state = {};
+const Home = (props) => {
 
-  render () {
-    return (
-      <div className="homepage">
+  const application = useSelector(state => state.application);
 
-        <Highlight />
+  return (
+    <div className="homepage">
 
-        <Content />
+      <Highlight />
 
-        <ContactBar />
+      {JSON.stringify(application)}
 
-      </div>
-    )
-  }
+      <Content />
 
-}
-/*
+      <ContactBar />
 
-    */
+    </div>
+  )
+
+};
+
+export default Home;
