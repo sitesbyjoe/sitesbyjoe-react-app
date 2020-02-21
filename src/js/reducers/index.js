@@ -1,8 +1,7 @@
 // src/js/reducers/index.js
 
-import { ADD_USER, GET_PORTFOLIO } from '../constants/action-types';
-
 const initialState = {
+  // just for fun state stuff
   childrenz: [{
     name: 'Isaac'
   },{
@@ -13,10 +12,16 @@ const initialState = {
   }, {
     name: 'Maryellen'
   }],
-  portfolio: [],
 
-  counter: 0
-  // users: []
+  application: {
+    version: '3.0',
+    name: 'Sites by Joe',
+    url: 'http://sitesbyjoe.com'
+  },
+
+  // real state stuff
+  portfolio: [],
+  posts: [],
 };
 
 console.log('initial state set', initialState);
@@ -25,18 +30,21 @@ function rootReducer(state = initialState, action) {
 
   console.log('rootReducer', action)
   
-  if (action.type === ADD_USER) {
-    // this returns a new object COPY of state, with mutation
-    // create empty object, populate with state, mutation
+  if (action.type === 'ADD_USER') {
     return Object.assign({}, state, {
       users: state.users.concat(action.payload)
     });
   }
 
-  if (action.type === 'DATA_LOADED') {
-    return Object.assign({}, state, {
-      portfolio: state.portfolio.concat(action.payload)
-    });
+  if (action.type === 'PORTFOLIO_LOADED') {
+    return { ...state, portfolio: action.payload }
+    // return Object.assign({}, state, {
+    //   portfolio: action.payload
+    // });
+  }
+
+  if (action.type === 'POSTS_LOADED') {
+    return { ...state, posts: action.payload }
   }
 
   return state;

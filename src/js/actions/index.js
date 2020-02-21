@@ -1,11 +1,10 @@
 // src/js/actions/index.js
 import axios from 'axios';
-import { ADD_USER, GET_PORTFOLIO } from '../constants/action-types';
 
 export function addUser(payload) {
   console.log('addUser running!', payload)
   return { 
-    type: ADD_USER, 
+    type: 'ADD_USER', 
     payload
   }
 };
@@ -17,9 +16,28 @@ export function getPortfolio () {
       method: 'get'
     })
     .then(resp => {
-      console.log('redux got something', resp)
+      console.log('getPortfolio returned', resp)
       dispatch({
-        type: 'DATA_LOADED',
+        type: 'PORTFOLIO_LOADED',
+        payload: resp.data
+      })
+    })
+    .catch(err => {
+      console.error('oh shit', err)
+    });
+  }
+};
+
+export function getPosts () {
+  return function (dispatch) {
+    return axios({
+      url: 'http://sitesbyjoe.com/api/post_list',
+      method: 'get'
+    })
+    .then(resp => {
+      console.log('getPosts returned', resp)
+      dispatch({
+        type: 'POSTS_LOADED',
         payload: resp.data
       })
     })
