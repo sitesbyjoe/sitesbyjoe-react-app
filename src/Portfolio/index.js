@@ -1,59 +1,25 @@
+// our Portfolio container component
+
 import React from 'react';
-import Moment from 'react-moment'
-import { Link } from 'react-router-dom'
-import { connect } from "react-redux";
-import { getPortfolio } from '../js/actions'
+import { connect } from 'react-redux';
+import { getPortfolio } from '../js/actions';
+import PortfolioList from './List.js';
 
 class Portfolio extends React.Component {
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      // portfolio: [],
-      loading: true,
-    }
-  }
-
+  // TODO: should move this to my sass
   disclaimerStyle = {
     color: 'rgba(255,255,255,0.6)',
     fontWeight: 'normal',
     textAlign: 'center'
   }
 
-  showLoading () {
-    if (this.props.portfolio.length === 0) {
-      return <p>Loading...</p>
-    }
-  }
-
-  componentWillMount () {
-    console.log('portfolio will mount')
-    // this.props.getPortfolio()
-  }
-
   componentDidMount () {
-    console.log('portfolio did mount')
-  }
-
-  componentDidUpdate () {
-    if (this.props.portfolio.length > 0) {
-      // this.setState({
-      //   loading: false
-      // })
-    }
+    console.log('portfolio container did mount')
+    this.props.getPortfolio();
   }
 
   render () {
-    let loading, list;
-    
-    if (this.state.loading === true) {
-      loading = <p>Loading...</p>
-    }
-
-    if (this.props.portfolio.length > 0) {
-      list = <p>{JSON.stringify(this.props.portfolio)}</p>
-    }
-
     return (
       <article className="portfolio">
         <div className="container">
@@ -63,23 +29,8 @@ class Portfolio extends React.Component {
             <p style={this.disclaimerStyle}>These are websites I had designed and built before joining Edvisors Networks, Inc.	 in October 2011 as a Senior Front End Developer.</p>
           </div>
 
-          {this.props.portfolio.map(item => 
-            <dl key={item.id}>
-              <dt className="image">
-                <Link to={'/portfolio/detail/' + item.id} title={item.description}>
-                  <img alt={item.name} src={'https://sitesbyjoe.com/' + item.image_path} />
-                </Link>
-                <span></span>
-              </dt>
-              <div className="details">
-                <dd className="site_name"><Link to={'/portfolio/detail/' + item.id}>{item.name}</Link></dd>
-                <dd className="launch_date">Launched <Moment format="MMMM, YYYY">{item.launch_date}</Moment></dd>
-                {/* <dd className="link"><a href={'https://sitesbyjoe.com/portfolio/detail/' + item.slug}>View Details<span></span></a></dd> */}
-                {/* <dd className="description">{item.description} <a href={'https://sitesbyjoe.com/portfolio/detail/' + item.slug}>Details</a></dd> */}
-              </div>
-            </dl>
-          )}
-            
+          <PortfolioList portfolio={this.props.portfolio} />
+
         </div>
       </article>
     )
