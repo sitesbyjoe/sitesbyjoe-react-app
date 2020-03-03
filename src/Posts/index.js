@@ -1,15 +1,17 @@
 // our Posts container component
 
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getPosts } from '../js/actions';
 import PostsList from './List.js';
 
 const Posts = (props) => {
 
+  const posts = useSelector(state => state.posts);
+
   useEffect (() => {
     console.log('posts container useEffect')
-    props.getPosts();
+    getPosts();
   }, [])
 
   return (
@@ -21,7 +23,7 @@ const Posts = (props) => {
           <p>I'll do what I want, I'm grown.</p>
         </div>
 
-        <PostsList posts={props.posts} />
+        <PostsList posts={posts} />
 
       </div>
     </article>
@@ -29,10 +31,4 @@ const Posts = (props) => {
 
 }
 
-function mapStateToProps (state) {
-  return { 
-    posts: state.posts
-  };
-};
-
-export default connect(mapStateToProps, { getPosts })(Posts)
+export default Posts;

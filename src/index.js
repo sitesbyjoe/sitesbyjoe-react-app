@@ -6,7 +6,7 @@ import App from './App';
 import store from "./js/store";
 import { Provider } from "react-redux";
 
-store.subscribe(() => console.log('Redux store subscribe'));
+store.subscribe(() => console.log('Redux store subscribe', store.getState()));
 
 ReactDOM.render((
   <Provider store={store}>

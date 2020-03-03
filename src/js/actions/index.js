@@ -10,6 +10,7 @@ export function addUser(payload) {
 };
 
 export function getPortfolio () {
+  console.log('getPortolio running')
   return function (dispatch) {
     return axios({
       url: 'http://sitesbyjoe.com/api/portfolio_list',

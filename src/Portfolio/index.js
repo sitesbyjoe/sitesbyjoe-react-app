@@ -1,47 +1,60 @@
 // our Portfolio container component
-
-import React from 'react';
-import { connect } from 'react-redux';
-import { getPortfolio } from '../js/actions';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+// import { getPortfolio } from '../js/actions';
 import PortfolioList from './List.js';
 
-class Portfolio extends React.Component {
+const Portfolio = (props) => {
+
+  const portfolio = useSelector(state => state.portfolio);
+  const dispatch = useDispatch();
+
+  const getPortfolio = () => {
+    return axios({
+      url: 'http://sitesbyjoe.com/api/portfolio_list',
+      method: 'get'
+    })
+    .then(resp => {
+      console.log('getPortfolio returned', resp)
+      dispatch({
+        type: 'PORTFOLIO_LOADED',
+        payload: resp.data
+      })
+    })
+    .catch(err => {
+      console.error('oh shit', err)
+    });
+  }
 
   // TODO: should move this to my sass
-  disclaimerStyle = {
+  const disclaimerStyle = {
     color: 'rgba(255,255,255,0.6)',
     fontWeight: 'normal',
     textAlign: 'center'
-  }
+  };
 
-  componentDidMount () {
+  useEffect(() => {
     console.log('portfolio container did mount')
-    this.props.getPortfolio();
-  }
+    getPortfolio();
+    // dispatch(() => { getPortfolio() })
+  }, []);
 
-  render () {
-    return (
-      <article className="portfolio">
-        <div className="container">
+  return (
+    <article className="portfolio">
+      <div className="container">
 
-          <div className="section-heading">
-            <h1>Web Design <span className="red">Portfolio Archive</span></h1>
-            <p style={this.disclaimerStyle}>These are websites I had designed and built before joining Edvisors Networks, Inc.	 in October 2011 as a Senior Front End Developer.</p>
-          </div>
-
-          <PortfolioList portfolio={this.props.portfolio} />
-
+        <div className="section-heading">
+          <h1>Web Design <span className="red">Portfolio Archive</span></h1>
+          <p style={disclaimerStyle}>These are websites I had designed and built before joining Edvisors Networks, Inc.	 in October 2011 as a Senior Front End Developer.</p>
         </div>
-      </article>
-    )
-  }
+
+        <PortfolioList portfolio={portfolio} />
+
+      </div>
+    </article>
+  )
 
 }
 
-function mapStateToProps (state) {
-  return { 
-    portfolio: state.portfolio
-  };
-};
-
-export default connect(mapStateToProps, { getPortfolio })(Portfolio)
+export default Portfolio;

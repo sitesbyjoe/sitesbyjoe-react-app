@@ -31,12 +31,14 @@ function rootReducer(state = initialState, action) {
   console.log('rootReducer', action)
   
   if (action.type === 'ADD_USER') {
+    console.log('ADD_USER')
     return Object.assign({}, state, {
       users: state.users.concat(action.payload)
     });
   }
 
   if (action.type === 'PORTFOLIO_LOADED') {
+    console.log('PORTFOLIO_LOADED')
     return { ...state, portfolio: action.payload }
     // return Object.assign({}, state, {
     //   portfolio: action.payload
@@ -44,6 +46,7 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === 'POSTS_LOADED') {
+    console.log('POST_LOADED')
     return { ...state, posts: action.payload }
   }
 
