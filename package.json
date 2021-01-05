@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "create-react-app": "^1.4.3",
     "grunt": "^1.0.4",
     "moment": "^2.24.0",
